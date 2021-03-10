@@ -1,0 +1,312 @@
+$green : #D4F1F4;
+$accent: #75E6DA;
+$grey: #D4F1F4;
+$code : #f8a384;
+$input : #211f2f;
+$codeClass :yellow;
+$copyBtn : rgba(15, 138, 138, .7);
+
+
+
+* {
+    font-family: 'Mukta Mahee', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100vh;
+    width: 90vw;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.section1 {
+    display: flex;
+    justify-content: center;
+    
+
+    .heading-wrapper {
+        text-align: center;
+    }  
+
+    h2 {
+        margin-top: 1em;
+        color: white;
+        font-size: 40px;
+        font-weight: 600;
+        text-transform: uppercase;
+
+    }
+
+    p {
+        font-family: 'Caveat', cursive !important;
+        color: white;
+        font-weight: 900;
+        font-size: 18px;
+
+        
+    }
+    ion-icon {
+        color: white;
+        font-weight: 900;
+        font-size: 18px;
+        margin-left: 10px;
+
+    }
+}
+
+.rowInputs {
+    display: flex;
+    justify-content: space-around;
+    width: 65vw;
+    margin: 0 auto;
+    margin-bottom: 20px !important;
+    margin-left: 10vw;
+}
+
+.columnInputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    height: 60vh;
+    left: 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-auto-flow: row dense;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 1px 2px rgb(0 0 0 / 23%);
+    height: 60vh;
+    border: 1px solid $accent;
+    width: 65vw;
+}
+
+.gridItem {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M0 0h4v4H0V0zm4 4h4v4H4V4z'/%3E%3C/g%3E%3C/svg%3E");
+    border: 1px dotted #fff;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    cursor: move;
+    position: relative;
+    z-index: 1000;
+    opacity: .5;
+}
+
+.row-inputs {
+    margin-top: 100px !important;
+
+}
+
+.section2 {
+    width: 70vw;
+    margin: 0 auto;
+
+}
+
+.input-wrapper {
+    display: flex;
+}
+
+label {
+    padding-right: 18px;
+    display: inline-block;
+    width: 150px;
+    color: white;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    float: right;
+    height: 60vh;
+    justify-content: center;
+
+    .input-wrapper {
+        margin-top: 15px !important;
+        align-items: center;
+    }
+}
+
+input {
+    font-size: 17px;
+    background: $input;
+    color: #fff;
+    width: 50px;
+    padding: .3ch 5px;
+    max-height: 40px;
+    border: 1px solid #666;
+}
+
+button {
+    background: transparent;
+    color: $accent;
+    padding: 4px 30px 5px;
+    border-radius: 1000px;
+    border: 1px solid $accent;
+    font-size: 16px;
+    margin: 20px 0 0;
+    cursor: pointer;
+    -webkit-transition: all .35s;
+    transition: all .35s;
+
+    &:hover {
+        background-color: $accent;
+        color: black;
+    }
+}
+
+.secondaryBtn {
+    color: $grey;
+    border: 1px solid $grey;
+    background: transparent;
+    padding: 4px 30px 5px;
+    border-radius: 1000px;
+    font-size: 16px;
+    margin: 20px 0 0;
+    cursor: pointer;
+    -webkit-transition: all .35s;
+    transition: all .35s;
+
+    &:hover {
+        background-color: #aaa;
+        color: black;
+    }
+}
+
+.alertWrapper,
+.codeWrapper {
+    position: absolute;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    top: 0px;
+    left: 0px;
+    z-index: 1001;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+
+    h2 {
+        color: white;
+        margin-top: 10px;
+        font-size: 40px;
+    }
+
+    h5 {
+        color: white;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    .heading {
+        text-align: start;
+        margin-bottom: 10px;
+    }
+
+    .alert {
+        position: relative;
+        text-align: center;
+        border: 1px solid $accent;
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 1px 2px rgb(0 0 0 / 23%);
+        background-color: black;
+
+        .secondaryBtn {
+            margin-right: 10px;
+        }
+
+        ion-icon {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: white;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+    }
+
+    .code {
+        position: relative;
+        background: #131321;
+        background: -webkit-gradient(linear, left top, left bottom, from(#131321), to(#1f1c2c));
+        background: linear-gradient(180deg, #131321 0, #1f1c2c);
+        box-shadow: 0 2px 20px 0 #000;
+        padding: 15px;
+        border-radius: 4px;
+        font-size: 15px;
+        max-height: 50vh;
+        text-align: center;
+        min-width: 30vw;
+        padding: 20px 5vw;
+
+        ion-icon {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            color: white;
+            width: 25px;
+            height: 25px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .code-snippet {
+            border: 1px solid $accent;
+            position: relative;
+            text-align: start;
+            padding: 20px;
+
+            .className {
+                color: $codeClass;
+                font-size: 15px;
+
+            }
+
+            .codeLine {
+                color: $accent;
+                margin-left: 30px;
+                font-size: 15px;
+                margin-top: 0px;
+
+                span {
+                    font-size: 15px;
+                    color: $code;
+                }
+            }
+
+            button {
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                margin: 0;
+                background: $copyBtn;
+                padding: 8px 12px;
+                border-radius: 0 4px 0 4px;
+            }
+        }
+    }
+}
+
+.Git-Wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    z-index: 1;
+}
