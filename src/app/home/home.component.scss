@@ -82,7 +82,6 @@ $copyBtn : rgba(15, 138, 138, .7);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     grid-auto-flow: row dense;
-    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 1px 2px rgb(0 0 0 / 23%);
     height: 60vh;
     border: 1px solid $accent;
     width: 65vw;
@@ -175,7 +174,7 @@ button {
     transition: all .35s;
 
     &:hover {
-        background-color: #aaa;
+        background-color: $grey;
         color: black;
     }
 }
@@ -242,7 +241,6 @@ button {
     .code {
         position: relative;
         background: #131321;
-        background: -webkit-gradient(linear, left top, left bottom, from(#131321), to(#1f1c2c));
         background: linear-gradient(180deg, #131321 0, #1f1c2c);
         box-shadow: 0 2px 20px 0 #000;
         padding: 15px;

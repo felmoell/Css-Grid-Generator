@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,) {
     document.getElementById("body").style.overflow = "hidden";
-    document.getElementById("body").style.background = "radial-gradient(ellipse at center, #192d38 0, #211f2f 100%)";
+    document.getElementById("body").style.background = "linear-gradient(to bottom right, #2782DF, #F1ACE6)";
     this.addRowInput();
     this.addRowInput();
     this.addRowInput();
