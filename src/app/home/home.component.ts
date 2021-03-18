@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
     this.addcolumnInput();
 
     this.rowForm.get("name").valueChanges.subscribe(selectedValue => {
-      console.log(selectedValue);
       if (this.rowInputs.length < selectedValue) {
         while (this.rowInputs.length < selectedValue) {
           this.addRowInput();
@@ -53,7 +52,6 @@ export class HomeComponent implements OnInit {
     })
 
     this.rowForm.get("columnCountInput").valueChanges.subscribe(selectedValue => {
-      console.log(selectedValue);
       if (this.columnInputs.length < selectedValue) {
         while (this.columnInputs.length < selectedValue) {
           this.addcolumnInput();
@@ -179,7 +177,7 @@ export class HomeComponent implements OnInit {
   openDialog() {
     document.getElementById("alertWrapper").style.visibility = "visible";
   }
-  copyToClipboard() {    
+  copyToClipboard() {
     if (this.columnString == "" && this.rowString == "") {
       let text = ".grid " + this.t + "\n"
         + "display:grid; \n"
@@ -188,30 +186,16 @@ export class HomeComponent implements OnInit {
         + "grid-column-gap: " + this.rowForm.value.columnGapInput + "px;  \n"
         + "grid-row-gap: " + this.rowForm.value.rowGapInput + "px;  \n"
         + "} \n";
-      navigator.clipboard.writeText(text).then(function () {
-        /* clipboard successfully set */
-        navigator.clipboard.readText().then(clipText =>
-          console.log(clipText));
-      }, function () {
-        console.error("Cant copy to Clipboard!")
-      });
+      navigator.clipboard.writeText(text);
     } else {
-      console.log(this.rowString);
-      console.log(this.columnString);
       let text = ".grid " + this.t + "\n"
-      + "display:grid; \n"
-      + "grid-template-columns: " + this.columnString + ";  \n"
-      + "grid-template-rows: " + this.rowString + ";  \n"
-      + "grid-column-gap: " + this.rowForm.value.columnGapInput + "px;  \n"
-      + "grid-row-gap: " + this.rowForm.value.rowGapInput + "px;  \n"
-      + "} \n";
-    navigator.clipboard.writeText(text).then(function () {
-      /* clipboard successfully set */
-      navigator.clipboard.readText().then(clipText =>
-        console.log(clipText));
-    }, function () {
-      console.error("Cant copy to Clipboard!")
-    });
+        + "display:grid; \n"
+        + "grid-template-columns: " + this.columnString + ";  \n"
+        + "grid-template-rows: " + this.rowString + ";  \n"
+        + "grid-column-gap: " + this.rowForm.value.columnGapInput + "px;  \n"
+        + "grid-row-gap: " + this.rowForm.value.rowGapInput + "px;  \n"
+        + "} \n";
+      navigator.clipboard.writeText(text);
     }
   }
 
