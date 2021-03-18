@@ -77,8 +77,14 @@
         <div class="code-snippet">
             <h5 class="className">.grid {{t}}</h5>
             <h5 class="codeLine"> display: <span> grid;</span> </h5>
-            <h5 class="codeLine"> grid-template-columns: <span> repeat({{rowCount}}, 1fr);</span> </h5>
-            <h5 class="codeLine"> grid-template-rows: <span> repeat({{columnCount}}, 1fr);</span> </h5>
+            <h5 class="codeLine"> grid-template-columns:
+                <span *ngIf="this.columnString == '' "> repeat({{rowCount}}, 1fr);</span>
+                <span *ngIf="this.columnString != '' "> {{columnString}};</span>
+            </h5>
+            <h5 class="codeLine"> grid-template-rows: 
+                <span *ngIf="this.rowString == '' "> repeat({{columnCount}},1fr);</span> 
+                <span *ngIf="this.rowString != '' "> {{rowString}};</span>         
+            </h5>
             <h5 class="codeLine"> grid-column-gap: <span> {{this.rowForm.value.columnGapInput}}px;</span> </h5>
             <h5 class="codeLine"> grid-row-gap: <span> {{this.rowForm.value.rowGapInput}}px;</span> </h5>
             <h5 class="className">}</h5>

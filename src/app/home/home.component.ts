@@ -179,23 +179,40 @@ export class HomeComponent implements OnInit {
   openDialog() {
     document.getElementById("alertWrapper").style.visibility = "visible";
   }
-  copyToClipboard() {
-    let text = ".grid " + this.t + "\n"
+  copyToClipboard() {    
+    if (this.columnString == "" && this.rowString == "") {
+      let text = ".grid " + this.t + "\n"
+        + "display:grid; \n"
+        + "grid-template-columns: repeat(" + this.rowCount + ", 1fr);  \n"
+        + "grid-template-rows: repeat(" + this.columnCount + ", 1fr);  \n"
+        + "grid-column-gap: " + this.rowForm.value.columnGapInput + "px;  \n"
+        + "grid-row-gap: " + this.rowForm.value.rowGapInput + "px;  \n"
+        + "} \n";
+      navigator.clipboard.writeText(text).then(function () {
+        /* clipboard successfully set */
+        navigator.clipboard.readText().then(clipText =>
+          console.log(clipText));
+      }, function () {
+        console.error("Cant copy to Clipboard!")
+      });
+    } else {
+      console.log(this.rowString);
+      console.log(this.columnString);
+      let text = ".grid " + this.t + "\n"
       + "display:grid; \n"
-      + "grid-template-columns: repeat(" + this.rowCount + ", 1fr);  \n"
-      + "grid-template-rows: repeat(" + this.columnCount + ", 1fr);  \n"
+      + "grid-template-columns: " + this.columnString + ";  \n"
+      + "grid-template-rows: " + this.rowString + ";  \n"
       + "grid-column-gap: " + this.rowForm.value.columnGapInput + "px;  \n"
       + "grid-row-gap: " + this.rowForm.value.rowGapInput + "px;  \n"
       + "} \n";
-
     navigator.clipboard.writeText(text).then(function () {
       /* clipboard successfully set */
       navigator.clipboard.readText().then(clipText =>
         console.log(clipText));
     }, function () {
-      /* clipboard write failed */
+      console.error("Cant copy to Clipboard!")
     });
-
+    }
   }
 
   openCopy() {
